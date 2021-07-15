@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -15,6 +16,9 @@ class TodoController extends Controller
     public function index()
     {
         //
+        $todos = Todo::all(['id', 'todo', 'status', 'user_id'])->take(10);
+
+        return view('todo.index', ['todos' => $todos]);
     }
 
     /**
@@ -30,7 +34,7 @@ class TodoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +45,7 @@ class TodoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Todo  $todo
+     * @param \App\Models\Todo $todo
      * @return \Illuminate\Http\Response
      */
     public function show(Todo $todo)
@@ -52,7 +56,7 @@ class TodoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Todo  $todo
+     * @param \App\Models\Todo $todo
      * @return \Illuminate\Http\Response
      */
     public function edit(Todo $todo)
@@ -63,8 +67,8 @@ class TodoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Todo  $todo
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Todo $todo
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Todo $todo)
@@ -75,7 +79,7 @@ class TodoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Todo  $todo
+     * @param \App\Models\Todo $todo
      * @return \Illuminate\Http\Response
      */
     public function destroy(Todo $todo)

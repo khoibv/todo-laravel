@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Todo;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class TodoFactory extends Factory
 {
@@ -22,7 +23,8 @@ class TodoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'todo' => $this->faker->text(),
+            'status' => $this->faker->boolean(),
         ];
     }
 }
