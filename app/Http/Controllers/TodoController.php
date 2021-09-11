@@ -16,7 +16,7 @@ class TodoController extends Controller
     public function index()
     {
         //
-        $todos = Todo::all(['id', 'todo', 'status', 'user_id'])->take(20);
+        $todos = Todo::all(['id', 'todo', 'status', 'user_id'])->take(30);
 
         return view('todo.index', ['todos' => $todos]);
     }
